@@ -4,3 +4,5 @@ Ce ChatBot fonctionne de la façon suivante :
 
 Un évolution gigantesque est possible pour arriver au niveau des chatbot célèbres d'aujourd'hui, mais je suis content de mes début avec ce langage.
 Attiré par l'IA par exemple, apprendre et comprendre les bases de ce langage est primordialpour mon évolution dans ce domaine informatique.
+
+*Peut évoluer... 🪜*
