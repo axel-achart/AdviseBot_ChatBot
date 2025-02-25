@@ -1,7 +1,3 @@
-# Ce que je peux ajouter : La compréhension de plusieurs mots-clés
-# Créé une interface plus confortable et agréable pour l'utilisateur
-
-
 import random
 
 #Réponses simples
