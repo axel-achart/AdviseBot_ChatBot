@@ -1,6 +1,7 @@
 import tkinter as tk
 import random 
 from chatbot import ConnectToAPI
+from chat.music import Music
 
 class Interface:
     def __init__(self, root, message_history, message_entry):
@@ -8,6 +9,7 @@ class Interface:
         self.message_history = message_history
         self.message_entry = message_entry
         self.api_connector = ConnectToAPI()
+        self.music = Music()
 
     def send_message(self):
         message = self.message_entry.get().lower().strip()
@@ -39,13 +41,15 @@ class Interface:
 
         words = message.split()
 
-        # Detect a genre
+        # Detect a genre and year
         for word in words:
-            if word.isdigit():
+            if word.isdigit() and len(word) == 4:  # Vérifie si le mot est une année (4 chiffres)
                 detected_year = word
             if word in genres:
                 detected_genre = word
-            break
+
+        if not detected_genre and not detected_year:
+            return "Please specify a genre or a year for movie recommendations."
 
         # Take a film from API
         movies = self.api_connector.fetch_movies_by_genre_and_year(detected_genre, detected_year)
@@ -54,4 +58,4 @@ class Interface:
             film = random.choice(movies) 
             return f"🎬 I recommand you : {film['Title']} ({film['Year']})"
 
-        return "I don't find a good movie with your request. Please retry."
+        return "I don't find a good movie with your request. Please retry and use words, not only years."
