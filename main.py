@@ -25,7 +25,7 @@ def main():
     logo_label.pack(side='left', padx=20)
 
     # Title in screen
-    label = tk.Label(screen, text="Lacking inspiration ?", font=FONT)
+    label = tk.Label(screen, text="AdviseBot | Lacking inspiration ?", font=FONT)
     label.configure(background=BACKGROUND)
     label.pack(pady=10)
 

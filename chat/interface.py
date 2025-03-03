@@ -45,17 +45,16 @@ class Interface:
         for word in words:
             if word.isdigit() and len(word) == 4:  # Vérifie si le mot est une année (4 chiffres)
                 detected_year = word
-            if word in genres:
+            elif word in genres:
                 detected_genre = word
 
-        if not detected_genre and not detected_year:
-            return "Please specify a genre or a year for movie recommendations."
+        if detected_genre or detected_year:
+            movies = self.api_connector.fetch_movies_by_genre_and_year(detected_genre, detected_year)
 
-        # Take a film from API
-        movies = self.api_connector.fetch_movies_by_genre_and_year(detected_genre, detected_year)
 
-        if movies:
-            film = random.choice(movies) 
-            return f"🎬 I recommand you : {film['Title']} ({film['Year']})"
-
-        return "I don't find a good movie with your request. Please retry and use words, not only years."
+            if movies:
+                film = random.choice(movies) 
+                return f"🎬 I recommand you : {film['Title']} ({film['Year']})"
+            return "I don't find a good movie with your request. Please retry and use words, not only years."
+        
+        return "Please specify at least a genre or a year for movie recommendations."

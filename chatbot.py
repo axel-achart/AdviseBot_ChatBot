@@ -11,7 +11,9 @@ class ConnectToAPI:
         url = f'http://www.omdbapi.com/?apikey=d3053818&type=movie'
 
         # Ajouter les paramètres en fonction des entrées utilisateur
-        if genre:
+        if genre and year:
+            url += f'&s={genre}&y={year}'
+        elif genre:
             url += f'&s={genre}'
         elif year:
             url += f'&y={year}&s=movie'
